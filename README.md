@@ -12,7 +12,9 @@ Using Powershell, we can check for, and immediately expire, all user accounts th
 
 ### IMPORTANT
 
-You must edit the script (New-TimeSpan -Days 364) to be one fewer than the number of days set to expire passwords by your company polcy. In this example, our company policy is to expire the passwords after 1 year (365 days), so the script checks for passwords last set more than than 364 days ago.
+You must edit the number of days (New-TimeSpan -Days 364) to be one fewer than the number of days set to expire passwords by your company polcy. In this example, our company policy is to expire the passwords after 1 year (365 days), so the script checks for passwords last set more than than 364 days ago.
+
+In our environment, user accounts (actual people) are differentiated from service accounts by having something in the "department" field of AD, and this script narrows down to that. You probably need to edit the script in likewise manner (something that separates accounts belonging to users from other accounts) if you want the same effect. To test, you can manually run just the first (edited) command to see what accounts it picks up, without running the second command that expires the passwords.
 
 Make sure you understand how to properly format and test Windows Task Scheduler tasks. Settings wrong in Security Options often trip people up.
 Under the Actions tab, these work for me:
